@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap" rel="stylesheet">
+    <title>Django Weather App</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'East Sea Dokdo', cursive;
+            background-color: rgba(50, 115, 220, 0.3);
+        }
+
+        #main {
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+        .form-control {
+
+            margin: auto;
+            width: 40%;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="main">
+    <h1> Weather Forcast</h1>
+    <form method="GET">
+  <div class="form-group">
+    <label for="city">Enter City</label>
+    <input type="text" name='city' id="city" value="{{ request.GET.city }}" class="form-control" align='center'  aria-describedby="CityHelp" placeholder="City">
+  </div>
+ <input type="submit" class="btn btn-info" value="Submit"/>
+</form>
+ 
+    {% if result %}
+        <h3>{{ result.region }}</h3>
+        <h3>{{ result.dayhour }}</h3>
+        <h3>{{ result.temp_now }}° C</h3>
+        <h3>{{ result.weather_now }}</h3>
+    {% endif %}
+</div>
+</body>
+</html>
